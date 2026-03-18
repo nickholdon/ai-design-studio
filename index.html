@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Design Studio - Diseño Inteligente con IA</title>
+    <meta name="description" content="Servicios profesionales de diseño con IA para diseño de interiores, modelos de e-commerce y recursos creativos.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .logo h1 {
+            color: #4a5568;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo .tagline {
+            color: #718096;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        nav a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover, nav a.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .hero {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            color: #4a5568;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            color: #718096;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+        
+        .service-card h3 {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .service-card p {
+            color: #718096;
+            margin-bottom: 1.5rem;
+        }
+        
+        .price {
+            color: #667eea;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .about {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+        
+        .about h2 {
+            color: #4a5568;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text p {
+            color: #718096;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-form h2 {
+            color: #4a5568;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            color: #718096;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: #a0aec0;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>AI Design Studio</h1>
+                <p class="tagline">Diseño inteligente impulsado por IA</p>
+            </div>
+            <nav>
+                <a href="#inicio" class="active">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </header>
+        
+        <section id="inicio" class="hero">
+            <h2>Transforma tus ideas en diseños extraordinarios</h2>
+            <p>Utilizamos inteligencia artificial de vanguardia para crear diseños únicos para interiores, modelos de e-commerce y recursos creativos. Rápido, económico y de alta calidad.</p>
+            <a href="#servicios" class="cta-button">Ver nuestros servicios</a>
+        </section>
+        
+        <section id="servicios" class="services">
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Diseño de Interiores con IA</h3>
+                <p>Visualiza cómo quedaría tu espacio con diferentes estilos de diseño, colores y mobiliario antes de hacer cualquier cambio físico.</p>
+                <div class="price">Desde $9.99</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">👗</div>
+                <h3>Modelos de E-commerce</h3>
+                <p>Genera imágenes profesionales de modelos para tu tienda online sin necesidad de sesiones fotográficas costosas.</p>
+                <div class="price">Desde $24.99</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🎮</div>
+                <h3>Recursos para Juegos</h3>
+                <p>Crea assets, personajes y escenarios para videojuegos con la potencia de la inteligencia artificial.</p>
+                <div class="price">Desde $49.99</div>
+            </div>
+        </section>
+        
+        <section id="nosotros" class="about">
+            <h2>Sobre AI Design Studio</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Somos un estudio de diseño especializado en la aplicación de inteligencia artificial para crear soluciones visuales innovadoras. Nuestro equipo combina experiencia en diseño tradicional con las últimas tecnologías de IA.</p>
+                    <p>Operamos desde Perú y servimos a clientes en toda América Latina, ofreciendo precios competitivos y soluciones adaptadas a las necesidades del mercado regional.</p>
+                    <p>Nuestra misión es democratizar el acceso a servicios de diseño de alta calidad, haciendo que la creatividad profesional sea accesible para todos.</p>
+                </div>
+                <div class="about-text">
+                    <p><strong>Ventajas de nuestro servicio:</strong></p>
+                    <ul style="color: #718096; padding-left: 1.5rem;">
+                        <li>Entrega en 24-48 horas</li>
+                        <li>Revisiones ilimitadas</li>
+                        <li>Soporte en español</li>
+                        <li>Pagos seguros con Mercado Pago</li>
+                        <li>Garantía de satisfacción</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contacto" class="contact-form">
+            <h2>Solicita un presupuesto</h2>
+            <form id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Servicio de interés</label>
+                    <select id="service" name="service" required>
+                        <option value="">Selecciona un servicio</option>
+                        <option value="interior">Diseño de Interiores</option>
+                        <option value="ecommerce">Modelos E-commerce</option>
+                        <option value="gaming">Recursos para Juegos</option>
+                        <option value="custom">Proyecto Personalizado</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Describe tu proyecto</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="cta-button" style="border: none; cursor: pointer; width: 100%;">
+                    Enviar solicitud
+                </button>
+            </form>
+        </section>
+        
+        <footer>
+            <div class="footer-links">
+                <a href="mailto:nickdunng@gmail.com">Contacto</a>
+                <a href="#terminos">Términos de servicio</a>
+                <a href="#privacidad">Política de privacidad</a>
+            </div>
+            <p class="copyright">© 2026 AI Design Studio. Todos los derechos reservados.</p>
+            <p class="copyright">Lima, Perú</p>
+        </footer>
+    </div>
+
+    <script>
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value
+            };
+            
+            // In a real implementation, this would send data to a server
+            // For now, just show a success message
+            alert('¡Gracias por tu solicitud! Te contactaremos en las próximas 24 horas.');
+            document.getElementById('contactForm').reset();
+            
+            // Log to console for debugging
+            console.log('Form submitted:', formData);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 20,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
