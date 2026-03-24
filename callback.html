@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Login Callback - N.studio AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 90%;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #25F4EE;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        
+        .message {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .api-details {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .api-details h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .detail-item {
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #666;
+        }
+        
+        .detail-value {
+            color: #333;
+            font-family: monospace;
+        }
+        
+        .button {
+            background: #FE2C55;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        
+        .button:hover {
+            background: #d41c45;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(254, 44, 85, 0.3);
+        }
+        
+        .sandbox-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 0.9em;
+            text-align: left;
+        }
+        
+        .flow-diagram {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f0f7ff;
+            border-radius: 10px;
+            border: 2px solid #dee2e6;
+        }
+        
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .step-number {
+            background: #25F4EE;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .step-text {
+            flex: 1;
+            text-align: left;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✓</div>
+        <h1>TikTok Login Successful!</h1>
+        <div class="message">
+            You have successfully connected your TikTok account to N.studio AI.
+            You can now generate AI content and share it directly to TikTok.
+        </div>
+        
+        <div class="api-details">
+            <h3>OAuth Authorization Details</h3>
+            <div class="detail-item">
+                <span class="detail-label">Status:</span>
+                <span class="detail-value" style="color: #28a745;">Authorized</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">User ID:</span>
+                <span class="detail-value">tiktok_test_user_12345</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Scope:</span>
+                <span class="detail-value">user.info.basic, video.publish</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Environment:</span>
+                <span class="detail-value">Sandbox</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Callback URL:</span>
+                <span class="detail-value">https://nickholdon.github.io/ai-design-studio/tiktok-demo/callback.html</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Timestamp:</span>
+                <span class="detail-value" id="timestamp"></span>
+            </div>
+        </div>
+        
+        <div class="flow-diagram">
+            <h3 style="text-align: center; margin-bottom: 20px;">OAuth Flow Completed</h3>
+            
+            <div class="flow-step">
+                <div class="step-number">1</div>
+                <div class="step-text">User clicked "Login with TikTok" on N.studio AI</div>
+            </div>
+            
+            <div class="flow-step">
+                <div class="step-number">2</div>
+                <div class="step-text">Redirected to TikTok OAuth authorization page</div>
+            </div>
+            
+            <div class="flow-step">
+                <div class="step-number">3</div>
+                <div class="step-text">User granted permissions (user.info.basic, video.publish)</div>
+            </div>
+            
+            <div class="flow-step">
+                <div class="step-number">4</div>
+                <div class="step-text">TikTok redirected back to this callback URL with authorization code</div>
+            </div>
+            
+            <div class="flow-step">
+                <div class="step-number">5</div>
+                <div class="step-text">N.studio AI exchanged code for access token</div>
+            </div>
+            
+            <div class="flow-step">
+                <div class="step-number">6</div>
+                <div class="step-text">User successfully connected - Ready to use TikTok API</div>
+            </div>
+        </div>
+        
+        <div class="sandbox-note">
+            <strong>Sandbox Environment Note:</strong> This demo uses TikTok's Sandbox API for development and testing.
+            All API calls are made to test endpoints and affect only test accounts.
+            In production, real TikTok user data and publishing capabilities will be enabled.
+        </div>
+        
+        <button class="button" onclick="window.location.href='index.html'">
+            ← Return to N.studio AI
+        </button>
+    </div>
+    
+    <script>
+        // Set current timestamp
+        document.getElementById('timestamp').textContent = new Date().toLocaleString('es-PE', {
+            timeZone: 'America/Lima',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+        
+        // Simulate OAuth parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code') || 'sandbox_auth_code_abc123';
+        const state = urlParams.get('state') || 'state_xyz789';
+        
+        console.log('TikTok OAuth Callback Parameters:');
+        console.log('Authorization Code:', code);
+        console.log('State:', state);
+        console.log('Callback URL:', window.location.href);
+        
+        // In a real implementation, you would:
+        // 1. Exchange the authorization code for an access token
+        // 2. Store the access token securely
+        // 3. Redirect to the main application
+    </script>
+</body>
+</html>
